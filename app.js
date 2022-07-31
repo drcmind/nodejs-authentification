@@ -3,8 +3,24 @@ const ejs = require("ejs");
 const path = require("path");
 const fs = require("fs");
 const { cours } = require("./data");
+const session = require("express-session");
 
 const app = express();
+const IN_PRODUCTION = process.env.NODE_ENV === "production";
+
+app.use(
+  session({
+    name: process.env.SEESION_NAME,
+    resave: false,
+    saveUninitialized: false,
+    secret: SESSION_SECRET,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      sameSite: true,
+      secure: IN_PRODUCTION,
+    },
+  })
+);
 
 app.engine("html", ejs.__express);
 
