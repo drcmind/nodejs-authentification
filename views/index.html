@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/styles_personalises/headers.css" rel="stylesheet">
+</head>
+<body>
+    
+    <main>
+        <%- include("header.html") %>
+        
+          <div class="album py-5 bg-light">
+            <div class="container">
+        
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                
+                <% cours.forEach((cour)=>{ %>
+                  <%- include("cours_item.html", {cours : cour}) %>
+                <% }) %>
+
+              </div>
+            </div>
+          </div>
+
+
+    </main>
+
+    <%- include("footer.html") %>
+
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
