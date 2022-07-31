@@ -14,12 +14,19 @@
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="/images/avatar.png" alt="Photo de profil" width="32" height="32" class="rounded-circle">
           </a>
-          <ul class="dropdown-menu text-small text-center"" aria-labelledby="dropdownUser1">
+          <ul class="dropdown-menu text-small text-center" aria-labelledby="dropdownUser1">
+            <% if(utilisateur){ %>
             <li><div class="text-center">
-              <img src="/images/avatar.png" alt="Photo de profil" width="32" height="32" class="rounded-circle">
-              <h4>Louis Musole</h4>
+              
+                <img src="/images/avatar.png" alt="Photo de profil" width="32" height="32" class="rounded-circle">
+                <h4><%= utilisateur.nom %></h4>
             </div></li>
-            <li><a class="dropdown-item" href="/connexion">Déconnexion</a></li>
+            <li>
+              <form action="/deconnexion" method="post"><button class="btn" type="submit">Déconnexion</button></form>
+            </li>
+            <% } else { %>
+              <a class="btn" href="/connexion">Connexion</a>
+            <% } %>
           </ul>
         </div>
       </div>
